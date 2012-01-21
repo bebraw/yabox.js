@@ -75,15 +75,11 @@
         max-width: 100%;
     }
 
-    .polaroid .description, .fullPolaroid .description {
+    .polaroid .desc, .fullPolaroid .desc {
         margin-bottom: 0em;
         font-family: 'Arial';
         font-size: normal;
         text-align: center;
-    }
-
-    .polaroid .longDescription, .fullPolaroid .longDescription {
-        display: none;
     }
 
     .animated:hover {
@@ -91,7 +87,44 @@
         -webkit-transform: scale(1.25);
         -moz-transform: scale(1.25);
     }
+
+    #overlay {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: black;
+        opacity: 0.2;
+    }
+
+    .fullPolaroid {
+        position: fixed;
+        /* XXX: nasty */
+        top: 25%;
+        left: 30%;
+    }
   </style>
+  <script type="text/javascript">
+      $(function() {
+          $('.polaroid').yabox({
+              fullClass: 'fullPolaroid'/*,
+              showCb: function() {
+                  // TODO: animate now
+              },
+              hideCb: function() {
+                  // TODO: animate now
+              },
+              visibleCb: function() {
+                  // TODO: attach close now
+              },
+              hiddenCb: function() {
+                  // optional cb triggered once hidden
+              }*/
+          });
+      });
+  </script>
 </head>
 
 <body>
@@ -120,23 +153,23 @@
     <div id="polaroids">
         <div class="animated polaroid">
             <img src="images/cow.jpg" />
-            <p class="description">Cow</p>
+            <p class="desc">Cow</p>
         </div>
         <div class="animated polaroid">
             <img src="images/grove.jpg" />
-            <p class="description">Grove</p>
+            <p class="desc">Grove</p>
         </div>
         <div class="animated polaroid">
             <img src="images/lake.jpg" />
-            <p class="description">Lake</p>
+            <p class="desc">Lake</p>
         </div>
         <div class="animated polaroid">
             <img src="images/sunset.jpg" />
-            <p class="description">Sunset</p>
+            <p class="desc">Sunset</p>
         </div>
         <div class="animated polaroid">
             <img src="images/trientalis.jpg" />
-            <p class="description">Trientalis Europaea</p>
+            <p class="desc">Trientalis Europaea</p>
         </div>
     </div>
     
