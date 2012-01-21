@@ -29,6 +29,68 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+
+    /* demo CSS */
+    #polaroids {
+        overflow: auto;
+    }
+    
+    .polaroid {
+        float: left;
+        width: 150px;
+    }
+
+    .polaroid, .fullPolaroid {
+        margin: 2em;
+        padding: 1%;
+        -moz-box-shadow: 3px 3px 10px #888;
+        -webkit-box-shadow: 3px 3px 10px #888;
+        box-shadow: 3px 3px 10px #888;
+        background: #fafafa;
+    }
+
+    .polaroid:nth-child(2n) {
+        -webkit-transform:rotate(3deg);
+        -moz-transform:rotate(3deg);
+        -o-transform:rotate(3deg);
+        -ms-transform:rotate(3deg);
+    }
+
+    .polaroid:nth-child(3n) {
+        -webkit-transform:rotate(-2deg);
+        -moz-transform:rotate(-2deg);
+        -o-transform:rotate(-2deg);
+        -ms-transform:rotate(-2deg);
+    }
+
+    .polaroid:nth-child(5n) {
+        -webkit-transform:rotate(-5deg);
+        -moz-transform:rotate(-5deg);
+        -o-transform:rotate(-5deg);
+        -ms-transform:rotate(-5deg);
+    }
+
+    .polaroid img, .fullPolaroid img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .polaroid .description, .fullPolaroid .description {
+        margin-bottom: 0em;
+        font-family: 'Arial';
+        font-size: normal;
+        text-align: center;
+    }
+
+    .polaroid .longDescription, .fullPolaroid .longDescription {
+        display: none;
+    }
+
+    .animated:hover {
+        -webkit-transition: -webkit-transform .15s linear;
+        -webkit-transform: scale(1.25);
+        -moz-transform: scale(1.25);
+    }
   </style>
 </head>
 
@@ -54,6 +116,29 @@
     <h2>Demo</h2> 
 
     <h3>Polaroids</h3>
+    
+    <div id="polaroids">
+        <div class="animated polaroid">
+            <img src="images/cow.jpg" />
+            <p class="description">Cow</p>
+        </div>
+        <div class="animated polaroid">
+            <img src="images/grove.jpg" />
+            <p class="description">Grove</p>
+        </div>
+        <div class="animated polaroid">
+            <img src="images/lake.jpg" />
+            <p class="description">Lake</p>
+        </div>
+        <div class="animated polaroid">
+            <img src="images/sunset.jpg" />
+            <p class="description">Sunset</p>
+        </div>
+        <div class="animated polaroid">
+            <img src="images/trientalis.jpg" />
+            <p class="description">Trientalis Europaea</p>
+        </div>
+    </div>
     
     <h2>Dependencies</h2>
 
