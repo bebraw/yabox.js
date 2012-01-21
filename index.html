@@ -36,19 +36,19 @@
     }
     
     .polaroid {
+        margin: 2em;
         float: left;
         width: 150px;
     }
 
     .polaroid, .fullPolaroid {
-        margin: 2em;
         padding: 1%;
         -moz-box-shadow: 3px 3px 10px #888;
         -webkit-box-shadow: 3px 3px 10px #888;
         box-shadow: 3px 3px 10px #888;
         background: #fafafa;
     }
-
+    
     .polaroid:nth-child(2n) {
         -webkit-transform:rotate(3deg);
         -moz-transform:rotate(3deg);
@@ -101,9 +101,8 @@
 
     .fullPolaroid {
         position: fixed;
-        /* XXX: nasty */
-        top: 25%;
-        left: 30%;
+        top: 50%;
+        left: 50%;
     }
   </style>
   <script type="text/javascript">

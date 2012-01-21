@@ -14,13 +14,15 @@
         }
 
         function full() {
-            return $elem.clone().hide().css({
+            var $e = $elem.clone().hide().css({
                     'z-index': $overlay.css('z-index') + 1
                 }).removeClass().addClass(opts.fullClass).
                 appendTo($('body')).bind('click', function() {
                     $full.hide();
                     $overlay.hide();
                 });
+
+            return $e;
         }
 
         $elem.bind('click', show);
@@ -29,6 +31,11 @@
             console.log('show');
             $full.show();
             $overlay.show();
+
+            $full.css({
+                'margin-left': -$full.outerWidth(true) / 2 + 'px',
+                'margin-top': -$full.outerHeight(true) / 2 + 'px'
+            });
         }
     }
 
