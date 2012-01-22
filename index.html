@@ -102,14 +102,16 @@
   <script type="text/javascript">
       $(function() {
           $('.polaroid').yabox({
-              fullClass: 'fullPolaroid'/*,
-              showCb: function() {
+              fullClass: 'fullPolaroid',
+              /*showCb: function() {
                   // TODO: animate now
+              },*/
+              hideCb: function($full, $overlay) {
+                  $full.fadeOut(300, function() {
+                      $overlay.fadeOut(300);
+                  });
               },
-              hideCb: function() {
-                  // TODO: animate now
-              },
-              visibleCb: function() {
+              /*visibleCb: function() {
                   // TODO: attach close now
               },
               hiddenCb: function() {

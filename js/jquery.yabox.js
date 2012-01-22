@@ -3,17 +3,13 @@
     function yabox($elem, opts) {
         var $overlay = $(opts.overlayId).length? $(opts.overlayId): overlay();
         var $full = full();
+        $overlay.bind('click', hide($('.' + opts.fullClass)))
 
         function overlay() {
             return $('<div>')
                 .attr('id', 'overlay')
                 .appendTo($('body'))
-                .hide()
-                .bind('click', function() {
-                        $('.' + opts.fullClass).hide();
-                        $overlay.hide(); 
-                    }
-                );
+                .hide();
         }
 
         function full() {
@@ -25,12 +21,8 @@
                 })
                 .removeClass()
                 .addClass(opts.fullClass)
-                .appendTo($('body'))
-                .bind('click', function() {
-                        $full.hide();
-                        $overlay.hide();
-                    }
-                );
+                .appendTo($('body'));
+            $e.bind('click', hide($e));
 
             return $e;
         }
@@ -42,6 +34,12 @@
 
             $full.center();
         }
+
+        function hide($f) {
+            return function() {
+                opts.hideCb($f, $overlay);
+            }
+        }
     }
 
     $.fn.center = function() {
@@ -51,8 +49,8 @@
             'top': '50%',
         });
         this.css({
-            'margin-left': -this.outerWidth(true) / 2 + 'px',
-            'margin-top': -this.outerHeight(true) / 2 + 'px'
+            'margin-left': -this.width() / 2 + 'px',
+            'margin-top': -this.height() / 2 + 'px'
         });
 
         return this;
@@ -63,7 +61,11 @@
             var $elem = $(this);
             var opts = $.extend({
                 overlayId: 'overlay',
-                fullClass: 'full'
+                fullClass: 'full',
+                hideCb: function($full, $overlay) {
+                    $full.hide();
+                    $overlay.hide();
+                }
             }, options);
 
             opts.overlayId = '#' + opts.overlayId;
