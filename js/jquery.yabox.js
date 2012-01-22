@@ -5,26 +5,37 @@
         var $full = full();
 
         function overlay() {
-            return $('<div>').attr('id', 'overlay').appendTo($('body')).hide().bind('click', function() {
-                $('.' + opts.fullClass).hide();
-                $overlay.hide(); 
-            });
+            return $('<div>')
+                .attr('id', 'overlay')
+                .appendTo($('body'))
+                .hide()
+                .bind('click', function() {
+                        $('.' + opts.fullClass).hide();
+                        $overlay.hide(); 
+                    }
+                );
         }
 
         function full() {
-            var $e = $elem.clone().hide().css({
+            var $e = $elem
+                .clone()
+                .hide()
+                .css({
                     'z-index': $overlay.css('z-index') + 1
-                }).removeClass().addClass(opts.fullClass).
-                appendTo($('body')).bind('click', function() {
-                    $full.hide();
-                    $overlay.hide();
-                });
+                })
+                .removeClass()
+                .addClass(opts.fullClass)
+                .appendTo($('body'))
+                .bind('click', function() {
+                        $full.hide();
+                        $overlay.hide();
+                    }
+                );
 
             return $e;
         }
 
         $elem.bind('click', show);
-
         function show() {
             $full.show();
             $overlay.show();
