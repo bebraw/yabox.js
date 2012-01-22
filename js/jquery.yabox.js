@@ -29,10 +29,8 @@
 
         $elem.bind('click', show);
         function show() {
-            $full.show();
-            $overlay.show();
-
             $full.center();
+            opts.showCb($full, $overlay);
         }
 
         function hide($f) {
@@ -62,6 +60,10 @@
             var opts = $.extend({
                 overlayId: 'overlay',
                 fullClass: 'full',
+                showCb: function($full, $overlay) {
+                    $overlay.show();
+                    $full.show();
+                },
                 hideCb: function($full, $overlay) {
                     $full.hide();
                     $overlay.hide();
