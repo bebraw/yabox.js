@@ -4,8 +4,6 @@
         var $overlay = $(opts.overlayId).length? $(opts.overlayId): overlay();
         var $full = full();
 
-        // TODO: figure out centering logic
-
         function overlay() {
             return $('<div>').attr('id', 'overlay').appendTo($('body')).hide().bind('click', function() {
                 $('.' + opts.fullClass).hide();
@@ -28,15 +26,25 @@
         $elem.bind('click', show);
 
         function show() {
-            console.log('show');
             $full.show();
             $overlay.show();
 
-            $full.css({
-                'margin-left': -$full.outerWidth(true) / 2 + 'px',
-                'margin-top': -$full.outerHeight(true) / 2 + 'px'
-            });
+            $full.center();
         }
+    }
+
+    $.fn.center = function() {
+        this.css({
+            'position': 'fixed',
+            'left': '50%',
+            'top': '50%',
+        });
+        this.css({
+            'margin-left': -this.outerWidth(true) / 2 + 'px',
+            'margin-top': -this.outerHeight(true) / 2 + 'px'
+        });
+
+        return this;
     }
 
     $.fn.yabox = function (options) {
