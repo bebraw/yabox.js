@@ -103,6 +103,9 @@
       $(function() {
           $('.polaroid').yabox({
               fullClass: 'fullPolaroid',
+              // these callbacks are optional
+              // as you can see they allow you to
+              // animate show/hide as you wish
               showCb: function($full, $overlay) {
                   $full.center();
                   $overlay.show().css('opacity', 0.3);
@@ -112,13 +115,7 @@
                   $full.fadeOut(300, function() {
                       $overlay.fadeOut(300);
                   });
-              },
-              /*visibleCb: function() {
-                  // TODO: attach close now
-              },
-              hiddenCb: function() {
-                  // optional cb triggered once hidden
-              }*/
+              }
           });
       });
   </script>
