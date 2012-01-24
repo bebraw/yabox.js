@@ -43,9 +43,9 @@
 
     .polaroid, .fullPolaroid {
         padding: 1%;
-        -moz-box-shadow: 3px 3px 10px #888;
-        -webkit-box-shadow: 3px 3px 10px #888;
-        box-shadow: 3px 3px 10px #888;
+        -moz-box-shadow: 3px 3px 10px #222;
+        -webkit-box-shadow: 3px 3px 10px #222;
+        box-shadow: 3px 3px 10px #222;
         background: #fafafa;
     }
     
@@ -98,6 +98,15 @@
         background-color: black;
         opacity: 0.2;
     }
+
+    #customContent {
+        -moz-box-shadow: 3px 3px 10px #222;
+        -webkit-box-shadow: 3px 3px 10px #222;
+        box-shadow: 3px 3px 10px #222;
+        padding-left: 2em;
+        padding-right: 2em;
+        background-color: white;
+    }
   </style>
   <script type="text/javascript">
       $(function() {
@@ -116,6 +125,10 @@
                       $overlay.fadeOut(300);
                   });
               }
+          });
+
+          $('#custom').yabox({
+              $content: $('#customContent')
           });
       });
   </script>
@@ -165,6 +178,16 @@
             <img src="images/trientalis.jpg" />
             <p class="desc">Trientalis Europaea</p>
         </div>
+    </div>
+    
+    <h3>Custom Content</h3>
+
+    <a href="#" id="custom">Click me!</a>
+
+    <div id="customContent">
+        <h2>Some Title</h2>
+        <img src="images/trientalis.jpg" />
+        <p>Some content and then some</p>
     </div>
     
     <h2>Dependencies</h2>

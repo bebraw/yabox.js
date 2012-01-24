@@ -13,22 +13,23 @@
         }
 
         function full() {
-            var $e = $elem
-                .clone()
-                .hide()
+            var $e = opts.$content? opts.$content: $elem.clone();
+            console.log(opts.$content);
+            $e = $e.hide()
                 .css({
                     'z-index': $overlay.css('z-index') + 1
                 })
                 .removeClass()
                 .addClass(opts.fullClass)
-                .appendTo($('body'));
-            $e.bind('click', hide($e));
+                .appendTo($('body'))
+                .bind('click', hide($e));
 
             return $e;
         }
 
         $elem.bind('click', show);
-        function show() {
+        function show(e) {
+            e.preventDefault();
             $full.center();
             opts.showCb($full, $overlay);
         }
@@ -60,6 +61,7 @@
             var opts = $.extend({
                 overlayId: 'overlay',
                 fullClass: 'full',
+                $content: null,
                 showCb: function($full, $overlay) {
                     $overlay.show();
                     $full.show();
