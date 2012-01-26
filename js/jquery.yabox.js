@@ -14,15 +14,18 @@
 
         function full() {
             var $e = opts.$content? opts.$content: $elem.clone();
-            console.log(opts.$content);
+
             $e = $e.hide()
                 .css({
                     'z-index': $overlay.css('z-index') + 1
                 })
                 .removeClass()
                 .addClass(opts.fullClass)
-                .appendTo($('body'))
-                .bind('click', hide($e));
+                .appendTo($('body'));
+
+            if(opts.hideOnClick) {
+                $e.bind('click', hide($e));
+            }
 
             return $e;
         }
@@ -61,6 +64,7 @@
             var opts = $.extend({
                 overlayId: 'overlay',
                 fullClass: 'full',
+                hideOnClick: true,
                 $content: null,
                 showCb: function($full, $overlay) {
                     $overlay.show();
