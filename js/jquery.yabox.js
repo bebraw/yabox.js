@@ -58,7 +58,7 @@
         return this;
     }
 
-    $.fn.yabox = function (options) {
+    $.fn.yabox = function(options) {
         return this.each(function () {
             var $elem = $(this);
             var opts = $.extend({
@@ -79,5 +79,9 @@
             opts.overlayId = '#' + opts.overlayId;
             yabox($elem, opts);
         });
+    };
+
+    $.fn.yabox.hide = function() {
+        $('#overlay').trigger('click');
     };
 })(jQuery);

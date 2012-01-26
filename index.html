@@ -107,6 +107,11 @@
         padding-right: 2em;
         background-color: white;
     }
+
+    #customContent .close {
+        float: right;
+        margin-right: -2em;
+    }
   </style>
   <script type="text/javascript">
       $(function() {
@@ -131,6 +136,8 @@
               hideOnClick: false,
               $content: $('#customContent')
           });
+
+          $('#customContent .close').bind('click', $('#custom').yabox.hide);
       });
   </script>
 </head>
@@ -186,6 +193,7 @@
     <a href="#" id="custom">Click me!</a>
 
     <div id="customContent">
+        <div class="close">X</div>
         <h2>Some Title</h2>
         <img src="images/trientalis.jpg" />
         <p>Some content and then some</p>
