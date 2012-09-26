@@ -6,7 +6,6 @@ $(function() {
         // animate show/hide as you wish
         cbs: {
             show: function($full, $overlay) {
-                $full.center();
                 $overlay.show().css('opacity', 0.3);
                 $full.fadeIn(300);
             },
