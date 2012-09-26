@@ -46,14 +46,14 @@
             $full.html($content);
 
             $full.center();
-            opts.showCb($full, $overlay);
+            opts.cbs.show($full, $overlay);
         }
 
         function hide($f) {
             return function() {
                 if(opts.$content) opts.$content.hide();
 
-                opts.hideCb($f, $overlay);
+                opts.cbs.hide($f, $overlay);
             };
         }
     }
@@ -75,18 +75,20 @@
     $.fn.yabox = function(options) {
         return this.each(function () {
             var $elem = $(this);
-            var opts = $.extend({
+            var opts = $.extend(true, {
                 overlayId: 'overlay',
                 fullClass: 'full',
                 hideOnClick: true,
                 $content: null,
-                showCb: function($full, $overlay) {
-                    $overlay.show();
-                    $full.show();
-                },
-                hideCb: function($full, $overlay) {
-                    $full.hide();
-                    $overlay.hide();
+                cbs: {
+                    show: function($full, $overlay) {
+                        $overlay.show();
+                        $full.show();
+                    },
+                    hide: function($full, $overlay) {
+                        $full.hide();
+                        $overlay.hide();
+                    }
                 }
             }, options);
 
