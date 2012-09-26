@@ -4,7 +4,7 @@ yabox.js makes it easy to create one of those infamous popovers. It sticks to th
 
 ## Installation
 
-Add prepackaged `dist/yabox.js` to your page.
+Add prepackaged `dist/jquery.yabox.js` to your page.
 
 ## Usage
 
