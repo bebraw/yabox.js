@@ -7,7 +7,11 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/demo.css">
     <script src="javascripts/scale.fix.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="dist/jquery.yabox.js"></script>
+    <script src="javascripts/demo.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
@@ -62,6 +66,44 @@
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#customContent .close'</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#custom'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">.</span><span class="nx">hide</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
+
+<h2>Demo</h2>
+
+    <h3>Polaroids</h3>
+    
+    <div id="polaroids">
+        <div class="animated polaroid">
+            <img alt="cow" src="/images/cow.jpg" />
+            <p class="desc">Cow</p>
+        </div>
+        <div class="animated polaroid">
+            <img alt="grove" src="/images/grove.jpg" />
+            <p class="desc">Grove</p>
+        </div>
+        <div class="animated polaroid">
+            <img alt="lake" src="/images/lake.jpg" />
+            <p class="desc">Lake</p>
+        </div>
+        <div class="animated polaroid">
+            <img alt="sunset" src="/images/sunset.jpg" />
+            <p class="desc">Sunset</p>
+        </div>
+        <div class="animated polaroid">
+            <img alt="trientalis" src="/images/trientalis.jpg" />
+            <p class="desc">Trientalis Europaea</p>
+        </div>
+    </div>
+
+    <h3>Custom Content</h3>
+
+    <a href="#" id="custom">Click me!</a>
+
+    <div id="customContent">
+        <div class="close">X</div>
+        <h2>Some Title</h2>
+        <img alt="trientalis" src="/images/trientalis.jpg" />
+        <p>Some content and then some</p>
+    </div>
 
 <h2>License</h2>
 
