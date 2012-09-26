@@ -39,38 +39,10 @@
 
 <h2>Usage</h2>
 
-<p>JavaScript:</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'.polaroid'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">({</span>
-        <span class="nx">fullClass</span><span class="o">:</span> <span class="s1">'fullPolaroid'</span><span class="p">,</span> <span class="c1">// used for popover</span>
-        <span class="c1">// optional callbacks for animating</span>
-        <span class="nx">showCb</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$full</span><span class="p">,</span> <span class="nx">$overlay</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$full</span><span class="p">.</span><span class="nx">center</span><span class="p">();</span>
-            <span class="nx">$overlay</span><span class="p">.</span><span class="nx">show</span><span class="p">().</span><span class="nx">css</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">);</span>
-            <span class="nx">$full</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="nx">hideCb</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$full</span><span class="p">,</span> <span class="nx">$overlay</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$full</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-                <span class="nx">$overlay</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
-            <span class="p">});</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#custom'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">({</span>
-        <span class="nx">hideOnClick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// sticky popover...</span>
-        <span class="nx">$content</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#customContent'</span><span class="p">)</span> <span class="c1">// loads content elsewhere</span>
-    <span class="p">});</span>
-
-    <span class="c1">// custom handlers</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#customContent .close'</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#custom'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">.</span><span class="nx">hide</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h2>Demo</h2>
+<p>See source!</p>
 
     <h3>Polaroids</h3>
-    
+
     <div id="polaroids">
         <div class="animated polaroid">
             <img alt="cow" src="images/cow.jpg" />
