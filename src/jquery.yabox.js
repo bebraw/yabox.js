@@ -8,7 +8,7 @@
 
         function overlay() {
             return $('<div/>')
-                .attr('id', 'overlay')
+                .addClass('overlay')
                 .appendTo($('body'))
                 .hide();
         }
