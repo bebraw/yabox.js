@@ -1,207 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <meta name="description" content="Light lightbox clone for jQuery.">
-  <meta name="author" content="Juho Vepsäläinen">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Yabox.js by bebraw</title>
 
-  <title>bebraw/yabox.js @ GitHub</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Yabox.js</h1>
+        <p>Yet another lightbox clone. Very light one this time. (MIT)</p>
+        <p class="view"><a href="https://github.com/bebraw/yabox.js">View the Project on GitHub <small>bebraw/yabox.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/bebraw/yabox.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bebraw/yabox.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bebraw/yabox.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>yabox.js makes it easy to create one of those infamous popovers. It sticks to the view center (fixed there). It is light and somewhat extensible by design.</p>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  <script src="js/jquery.yabox.js" type="text/javascript"></script>
-  <style type="text/css">
-    #polaroids {
-        overflow: auto;
-    }
-    
-    .polaroid {
-        margin: 2em;
-        float: left;
-        width: 150px;
-    }
+<h2>Installation</h2>
 
-    .polaroid, .fullPolaroid {
-        padding: 1em;
-        -moz-box-shadow: 3px 3px 10px #222;
-        -webkit-box-shadow: 3px 3px 10px #222;
-        box-shadow: 3px 3px 10px #222;
-        background: #fafafa;
-    }
-    
-    .polaroid:nth-child(2n) {
-        -webkit-transform:rotate(3deg);
-        -moz-transform:rotate(3deg);
-        -o-transform:rotate(3deg);
-        -ms-transform:rotate(3deg);
-    }
+<p>Add prepackaged <code>dist/jquery.yabox.js</code> to your page.</p>
 
-    .polaroid:nth-child(3n) {
-        -webkit-transform:rotate(-2deg);
-        -moz-transform:rotate(-2deg);
-        -o-transform:rotate(-2deg);
-        -ms-transform:rotate(-2deg);
-    }
+<h2>Usage</h2>
 
-    .polaroid:nth-child(5n) {
-        -webkit-transform:rotate(-5deg);
-        -moz-transform:rotate(-5deg);
-        -o-transform:rotate(-5deg);
-        -ms-transform:rotate(-5deg);
-    }
+<p>JavaScript:</p>
 
-    .polaroid img, .fullPolaroid img {
-        max-height: 100%;
-        max-width: 100%;
-    }
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.polaroid'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">({</span>
+        <span class="nx">fullClass</span><span class="o">:</span> <span class="s1">'fullPolaroid'</span><span class="p">,</span> <span class="c1">// used for popover</span>
+        <span class="c1">// optional callbacks for animating</span>
+        <span class="nx">showCb</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$full</span><span class="p">,</span> <span class="nx">$overlay</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$full</span><span class="p">.</span><span class="nx">center</span><span class="p">();</span>
+            <span class="nx">$overlay</span><span class="p">.</span><span class="nx">show</span><span class="p">().</span><span class="nx">css</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">);</span>
+            <span class="nx">$full</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">hideCb</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$full</span><span class="p">,</span> <span class="nx">$overlay</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$full</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">$overlay</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
 
-    .polaroid .desc, .fullPolaroid .desc {
-        margin-bottom: 0em;
-        font-family: 'Arial';
-        font-size: normal;
-        text-align: center;
-    }
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#custom'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">({</span>
+        <span class="nx">hideOnClick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// sticky popover...</span>
+        <span class="nx">$content</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#customContent'</span><span class="p">)</span> <span class="c1">// loads content elsewhere</span>
+    <span class="p">});</span>
 
-    .animated:hover {
-        -webkit-transition: -webkit-transform .15s linear;
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-    }
+    <span class="c1">// custom handlers</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#customContent .close'</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#custom'</span><span class="p">).</span><span class="nx">yabox</span><span class="p">.</span><span class="nx">hide</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
 
-    #overlay {
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        z-index: 1;
-        background-color: black;
-        opacity: 0.2;
-    }
+<h2>License</h2>
 
-    #customContent {
-        -moz-box-shadow: 3px 3px 10px #222;
-        -webkit-box-shadow: 3px 3px 10px #222;
-        box-shadow: 3px 3px 10px #222;
-        padding-left: 2em;
-        padding-right: 2em;
-        background-color: white;
-    }
-
-    #customContent .close {
-        float: right;
-        margin-right: -2em;
-    }
-  </style>
-  <script type="text/javascript">
-      $(function() {
-          $('.polaroid').yabox({
-              fullClass: 'fullPolaroid',
-              // these callbacks are optional
-              // as you can see they allow you to
-              // animate show/hide as you wish
-              showCb: function($full, $overlay) {
-                  $full.center();
-                  $overlay.show().css('opacity', 0.3);
-                  $full.fadeIn(300);
-              },
-              hideCb: function($full, $overlay) {
-                  $full.fadeOut(300, function() {
-                      $overlay.fadeOut(300);
-                  });
-              }
-          });
-
-          $('#custom').yabox({
-              hideOnClick: false,
-              $content: $('#customContent')
-          });
-
-          $('#customContent .close').bind('click', $('#custom').yabox.hide);
-      });
-  </script>
-</head>
-
-<body>
-    <a href="https://github.com/bebraw/yabox.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div class="container">
-
-    <div class="row">
-        <h1><a href="https://github.com/bebraw/yabox.js">yabox.js</a>
-            <span class="small">by <a href="https://github.com/bebraw">bebraw</a></span></h1>
-
-        <div class="description">Yet another lightbox clone. Very light one this time.</div>
-        
-        <h2>License</h2>
-        
-        <div class="license">MIT</div>
-    
-        <h2>Dependencies</h2>
-
-        <div>jQuery (1.something)</div>
-
-        <h2>Installation</h2>
-    
-        <div>Copy jquery.yabox.js to some appropriate place, link to it at your HTML, use <pre>$(selector).yabox(opts);</pre> Check out opts and markup at source.</div>
-
-        <h2>Download</h2>
-
-        <div class="download">
-            <a href="https://github.com/bebraw/yabox.js/zipball/gh-pages">
-                <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-            <a href="https://github.com/bebraw/yabox.js/tarball/gh-pages">
-                <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-        </div>
-
-        <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running: <pre>$ git clone git://github.com/bebraw/yabox.js</pre></p>
-        <p>Get the source code on GitHub : <a href="https://github.com/bebraw/yabox.js">bebraw/yabox.js</a></p>
+<p>yabox.js is available under MIT. See LICENSE for more details.</p>
+      </section>
     </div>
-
-    <div class="row">
-    <h2>Demo</h2> 
-
-    <h3>Polaroids</h3>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/bebraw">bebraw</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-    <div id="polaroids">
-        <div class="animated polaroid">
-            <img src="images/cow.jpg" />
-            <p class="desc">Cow</p>
-        </div>
-        <div class="animated polaroid">
-            <img src="images/grove.jpg" />
-            <p class="desc">Grove</p>
-        </div>
-        <div class="animated polaroid">
-            <img src="images/lake.jpg" />
-            <p class="desc">Lake</p>
-        </div>
-        <div class="animated polaroid">
-            <img src="images/sunset.jpg" />
-            <p class="desc">Sunset</p>
-        </div>
-        <div class="animated polaroid">
-            <img src="images/trientalis.jpg" />
-            <p class="desc">Trientalis Europaea</p>
-        </div>
-    </div>
-    
-    <h3>Custom Content</h3>
-
-    <a href="#" id="custom">Click me!</a>
-
-    <div id="customContent">
-        <div class="close">X</div>
-        <h2>Some Title</h2>
-        <img src="images/trientalis.jpg" />
-        <p>Some content and then some</p>
-    </div>
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>
