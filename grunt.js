@@ -14,6 +14,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['<banner:meta.banner>',
+              'src/jquery.center.js',
               'src/jquery.yabox.js'],
         dest: 'dist/jquery.yabox.js'
       }

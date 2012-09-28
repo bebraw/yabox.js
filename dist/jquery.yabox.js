@@ -1,6 +1,33 @@
-/*! yabox.js - v0.4.0 - 2012-09-26
+/*! yabox.js - v0.4.0 - 2012-09-28
 * http://bebraw.github.com/yabox.js/
 * Copyright (c) 2012 Juho Vepsalainen; Licensed MIT */
+
+(function ($) {
+    // http://stackoverflow.com/a/210733/228885
+    jQuery.fn.center = function ($parent) {
+        $parent = $parent || $(window);
+
+        var $e = this;
+
+
+        this.css("position","absolute");
+        this.css("top", Math.max(0, (($parent.height() - this.outerHeight()) / 2) +
+            $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($parent.width() - this.outerWidth()) / 2) +
+            $(window).scrollLeft()) + "px");
+
+        if(!$e.data('centered')) {
+            $(window).on('resize', center).on('scroll', center);
+        }
+
+        function center() {
+            $e.center($parent);
+            $e.data('centered', true);
+        }
+
+        return this;
+    };
+})(jQuery);
 
 (function ($) {
     function yabox($elem, opts) {
@@ -59,20 +86,6 @@
             };
         }
     }
-
-    $.fn.center = function() {
-        this.css({
-            'position': 'fixed',
-            'left': '50%',
-            'top': '50%'
-        });
-        this.css({
-            'margin-left': -this.width() / 2 + 'px',
-            'margin-top': -this.height() / 2 + 'px'
-        });
-
-        return this;
-    };
 
     $.fn.yabox = function(options) {
         return this.each(function () {
