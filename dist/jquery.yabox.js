@@ -1,4 +1,4 @@
-/*! yabox.js - v0.4.5 - 2012-09-28
+/*! yabox.js - v0.4.5 - 2012-10-18
 * http://bebraw.github.com/yabox.js/
 * Copyright (c) 2012 Juho Vepsalainen; Licensed MIT */
 
@@ -9,14 +9,13 @@
 
         var $e = this;
 
-
         this.css("position","absolute");
         this.css("top", Math.max(0, (($parent.height() - this.outerHeight()) / 2) +
             $(window).scrollTop()) + "px");
         this.css("left", Math.max(0, (($parent.width() - this.outerWidth()) / 2) +
             $(window).scrollLeft()) + "px");
 
-        if(!$e.data('centered')) {
+        if(!this.data('centered')) {
             $(window).on('resize', center).on('scroll', center);
         }
 
@@ -61,7 +60,7 @@
         function show(e) {
             e.preventDefault();
 
-            opts.cbs.beforeShow($full, $overlay);
+            opts.cbs.beforeShow($full, $overlay, $elem);
 
             var $content;
             if(opts.$content) {
@@ -75,14 +74,14 @@
             $full.html($content);
 
             $full.center();
-            opts.cbs.show($full, $overlay);
+            opts.cbs.show($full, $overlay, $elem);
         }
 
         function hide($f) {
             return function() {
                 if(opts.$content) opts.$content.hide();
 
-                opts.cbs.hide($f, $overlay);
+                opts.cbs.hide($f, $overlay, $elem);
             };
         }
     }

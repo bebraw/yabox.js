@@ -30,7 +30,7 @@
         function show(e) {
             e.preventDefault();
 
-            opts.cbs.beforeShow($full, $overlay);
+            opts.cbs.beforeShow($full, $overlay, $elem);
 
             var $content;
             if(opts.$content) {
@@ -44,14 +44,14 @@
             $full.html($content);
 
             $full.center();
-            opts.cbs.show($full, $overlay);
+            opts.cbs.show($full, $overlay, $elem);
         }
 
         function hide($f) {
             return function() {
                 if(opts.$content) opts.$content.hide();
 
-                opts.cbs.hide($f, $overlay);
+                opts.cbs.hide($f, $overlay, $elem);
             };
         }
     }
