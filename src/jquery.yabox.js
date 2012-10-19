@@ -46,8 +46,6 @@
         });
 
         function show() {
-            opts.cbs.beforeShow($overlay, $full, $elem);
-
             var $content;
             if(opts.$content) {
                 opts.$content.show();
@@ -100,7 +98,6 @@
                 hideOnClick: true,
                 $content: null,
                 cbs: {
-                    beforeShow: function($overlay, $full) {},
                     show: function($overlay, $full) {
                         $overlay.show();
                         $full.show();
