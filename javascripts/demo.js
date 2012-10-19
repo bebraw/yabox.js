@@ -1,4 +1,11 @@
 $(function() {
+    // this is an "anonymous" yabox we can show/hide procedurally
+    // handy for certain kind of popovers (think progress bars and such)
+    var y = $().yabox({
+        hideOnClick: false,
+        $content: $('#customContent')
+    });
+
     $('.polaroid').yabox({
         fullClass: 'fullPolaroid',
         // these callbacks are optional
@@ -23,4 +30,10 @@ $(function() {
     });
 
     $('#customContent .close').bind('click', $('#custom').yabox.hide);
+
+    $('#empty').on('click', function(e) {
+        e.preventDefault();
+
+        y.show();
+    });
 });

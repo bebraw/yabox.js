@@ -6,6 +6,11 @@
 
         if(opts.$content) opts.$content.hide();
 
+        if(!$elem) return {
+            show: show,
+            hide: hide($full)
+        };
+
         function overlay() {
             return $('<div/>')
                 .addClass('overlay')
@@ -26,10 +31,13 @@
             return $e;
         }
 
-        $elem.bind('click', show);
-        function show(e) {
+        if($elem) $elem.bind('click', function(e) {
             e.preventDefault();
 
+            show();
+        });
+
+        function show() {
             opts.cbs.beforeShow($full, $overlay, $elem);
 
             var $content;
@@ -37,7 +45,7 @@
                 opts.$content.show();
                 $content = opts.$content;
             }
-            else $content = $elem.clone();
+            else if($elem) $content = $elem.clone();
 
             $content.removeClass();
 
@@ -57,9 +65,17 @@
     }
 
     $.fn.yabox = function(options) {
-        return this.each(function () {
+        if(!this.length) {
+            return yabox(undefined, opts(options));
+        }
+
+        return this.each(function() {
             var $elem = $(this);
-            var opts = $.extend(true, {
+            yabox($elem, opts(options));
+        });
+
+        function opts(o) {
+            var ret = $.extend(true, {
                 overlayId: 'overlay',
                 fullClass: 'full',
                 hideOnClick: true,
@@ -75,11 +91,12 @@
                         $overlay.hide();
                     }
                 }
-            }, options);
+            }, o);
 
-            opts.overlayId = '#' + opts.overlayId;
-            yabox($elem, opts);
-        });
+            ret.overlayId = '#' + ret.overlayId;
+
+            return ret;
+        }
     };
 
     $.fn.yabox.hide = function() {
