@@ -12,11 +12,11 @@ $(function() {
         // as you can see they allow you to
         // animate show/hide as you wish
         cbs: {
-            show: function($full, $overlay) {
+            show: function($overlay, $full) {
                 $overlay.show().css('opacity', 0.3);
                 $full.fadeIn(300);
             },
-            hide: function($full, $overlay) {
+            hide: function($overlay, $full) {
                 $full.fadeOut(300, function() {
                     $overlay.fadeOut(300);
                 });
@@ -29,7 +29,7 @@ $(function() {
         $content: $('#customContent')
     });
 
-    $('#customContent .close').bind('click', $('#custom').yabox.hide);
+    $('#customContent .close').live('click', $().yabox.hide);
 
     $('#empty').on('click', function(e) {
         e.preventDefault();

@@ -30,20 +30,28 @@
 
 (function ($) {
     function yabox($elem, opts) {
-        var $overlay = $(opts.overlayId).length? $(opts.overlayId): overlay();
+        var $overlay;
+        var overlayExists = $('.yabox_overlay').length > 0;
+
+        if(overlayExists) {
+            $overlay = $('.yabox_overlay:first');
+        }
+        else {
+            $overlay = $(opts.overlayId).length? $(opts.overlayId): overlay();
+            $overlay.addClass('yabox_overlay');
+       }
+
         var $full = full();
-        $overlay.bind('click', hide($('.' + opts.fullClass)));
 
         if(opts.$content) opts.$content.hide();
 
         if(!$elem) return {
             show: show,
-            hide: hide($full)
+            hide: forceHide($full)
         };
 
         function overlay() {
             return $('<div/>')
-                .addClass('overlay')
                 .appendTo($('body'))
                 .hide();
         }
@@ -56,7 +64,7 @@
                 .addClass(opts.fullClass)
                 .appendTo($('body'));
 
-            if(opts.hideOnClick) $e.bind('click', hide($e));
+            $e.bind('click', hide($e));
 
             return $e;
         }
@@ -68,7 +76,7 @@
         });
 
         function show() {
-            opts.cbs.beforeShow($full, $overlay, $elem);
+            opts.cbs.beforeShow($overlay, $full, $elem);
 
             var $content;
             if(opts.$content) {
@@ -82,14 +90,25 @@
             $full.html($content);
 
             $full.center();
-            opts.cbs.show($full, $overlay, $elem);
+            opts.cbs.show($overlay, $full, $elem);
+
+            $overlay.unbind('click');
+            $overlay.bind('click', hide($('.' + opts.fullClass)));
+            $overlay.unbind('hide');
+            $overlay.bind('hide', forceHide($full));
         }
 
         function hide($f) {
             return function() {
-                if(opts.$content) opts.$content.hide();
+                if(!opts.hideOnClick) return;
+                forceHide($f)();
+            };
+        }
 
-                opts.cbs.hide($f, $overlay, $elem);
+        function forceHide($f) {
+            return function() {
+                if(opts.$content) opts.$content.hide();
+                opts.cbs.hide($overlay, $f, $elem);
             };
         }
     }
@@ -111,13 +130,13 @@
                 hideOnClick: true,
                 $content: null,
                 cbs: {
-                    beforeShow: function($full, $overlay) {},
-                    show: function($full, $overlay) {
+                    beforeShow: function($overlay, $full) {},
+                    show: function($overlay, $full) {
                         $overlay.show();
                         $full.show();
                     },
-                    hide: function($full, $overlay) {
-                        $full.hide();
+                    hide: function($overlay, $full) {
+                        if($full) $full.hide();
                         $overlay.hide();
                     }
                 }
@@ -130,6 +149,6 @@
     };
 
     $.fn.yabox.hide = function() {
-        $('#overlay').trigger('click');
+        $('.yabox_overlay').trigger('hide');
     };
 })(jQuery);

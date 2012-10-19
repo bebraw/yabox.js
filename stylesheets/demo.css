@@ -55,7 +55,7 @@
     -moz-transform: scale(1.25);
 }
 
-.overlay {
+.yabox_overlay {
     position: fixed;
     height: 100%;
     width: 100%;
