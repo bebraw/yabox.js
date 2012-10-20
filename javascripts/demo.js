@@ -11,16 +11,10 @@ $(function() {
         // these callbacks are optional
         // as you can see they allow you to
         // animate show/hide as you wish
+        // in this case I've used predefined animation helpers
         cbs: {
-            show: function($overlay, $full) {
-                $overlay.show().css('opacity', 0.3);
-                $full.fadeIn(300);
-            },
-            hide: function($overlay, $full) {
-                $full.fadeOut(300, function() {
-                    $overlay.fadeOut(300);
-                });
-            }
+            show: $().yabox.animated.show(),
+            hide: $().yabox.animated.hide()
         }
     });
 

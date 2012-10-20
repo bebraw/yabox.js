@@ -108,6 +108,28 @@
         }
     };
 
+    $.fn.yabox.animated = {
+        show: function(length, opacity) {
+            length = length || 300;
+            opacity = opacity || 0.3;
+
+            return function($overlay, $full) {
+                $overlay.show().css('opacity', opacity);
+                $full.fadeIn(length);
+            };
+        },
+        hide: function(fullLength, overlayLength) {
+            fullLength = fullLength || 300;
+            overlayLength = overlayLength || 300;
+
+            return function($overlay, $full) {
+                $full.fadeOut(fullLength, function() {
+                    $overlay.fadeOut(overlayLength);
+                });
+            };
+        }
+    };
+
     $.fn.yabox.hide = function() {
         $('.' + overlayClass).trigger('hide');
     };
