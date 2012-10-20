@@ -1,4 +1,4 @@
-/*! yabox.js - v0.5.0 - 2012-10-19
+/*! yabox.js - v0.5.0 - 2012-10-20
 * http://bebraw.github.com/yabox.js/
 * Copyright (c) 2012 Juho Vepsalainen; Licensed MIT */
 
@@ -29,18 +29,10 @@
 })(jQuery);
 
 (function ($) {
+    var overlayClass = 'yabox_overlay';
+
     function yabox($elem, opts) {
-        var $overlay;
-        var overlayExists = $('.yabox_overlay').length > 0;
-
-        if(overlayExists) {
-            $overlay = $('.yabox_overlay:first');
-        }
-        else {
-            $overlay = $(opts.overlayId).length? $(opts.overlayId): overlay();
-            $overlay.addClass('yabox_overlay');
-       }
-
+        var $overlay = getOrCreate('.' + overlayClass, overlay);
         var $full = full();
 
         if(opts.$content) opts.$content.hide();
@@ -50,9 +42,15 @@
             hide: forceHide($full)
         };
 
+        function getOrCreate(selector, creator) {
+            var elem = $(selector + ':first');
+            return elem.length? elem: creator();
+        }
+
         function overlay() {
             return $('<div/>')
                 .appendTo($('body'))
+                .addClass(overlayClass)
                 .hide();
         }
 
@@ -122,8 +120,7 @@
         });
 
         function opts(o) {
-            var ret = $.extend(true, {
-                overlayId: 'overlay',
+            return $.extend(true, {
                 fullClass: 'full',
                 hideOnClick: true,
                 $content: null,
@@ -138,14 +135,10 @@
                     }
                 }
             }, o);
-
-            ret.overlayId = '#' + ret.overlayId;
-
-            return ret;
         }
     };
 
     $.fn.yabox.hide = function() {
-        $('.yabox_overlay').trigger('hide');
+        $('.' + overlayClass).trigger('hide');
     };
 })(jQuery);
