@@ -85,14 +85,12 @@
             $content.hide();
         }
         else if($elem) {
-            $ret = $elem.clone();
+            $ret = $elem.clone().removeClass();
         }
         else {
             console.warn('No content given to yabox!');
             return $();
         }
-
-        $ret.removeClass();
 
         return $ret;
     }
