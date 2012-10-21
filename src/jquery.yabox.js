@@ -35,8 +35,8 @@
 
         function show() {
             $full.html($content);
-            $full.center();
             $content.show();
+            $full.center();
             opts.cbs.show($overlay, $full, $elem);
         }
 
