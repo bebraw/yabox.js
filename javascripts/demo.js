@@ -23,6 +23,10 @@ $(function() {
         $content: $('#customContent')
     });
 
+    $('#anotherYabox').yabox({
+        $content: $('#anotherContent')
+    });
+
     $('#customContent .close').live('click', $().yabox.hide);
 
     $('#empty').on('click', function(e) {
