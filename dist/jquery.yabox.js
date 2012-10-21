@@ -29,84 +29,96 @@
 })(jQuery);
 
 (function ($) {
+    var fullClass = 'yabox_full';
     var overlayClass = 'yabox_overlay';
 
     function yabox($elem, opts) {
-        var $overlay = getOrCreate('.' + overlayClass, overlay);
-        var $full = full();
-
-        if(opts.$content) opts.$content.hide();
-
-        if(!$elem) return {
-            show: show,
-            hide: forceHide($full)
-        };
-
-        function getOrCreate(selector, creator) {
-            var elem = $(selector + ':first');
-            return elem.length? elem: creator();
-        }
-
-        function overlay() {
-            return $('<div/>')
-                .appendTo($('body'))
-                .addClass(overlayClass)
-                .hide();
-        }
-
-        function full() {
-            var $e = $('<div/>').hide()
-                .css({
-                    'z-index': $overlay.css('z-index') + 1
-                })
-                .addClass(opts.fullClass)
-                .appendTo($('body'));
-
-            $e.bind('click', hide($e));
-
-            return $e;
-        }
-
-        if($elem) $elem.bind('click', function(e) {
-            e.preventDefault();
-
-            show();
+        var $overlay = overlay(opts, hide(true), function() {
+            $('.' + fullClass + ':visible:first').trigger('click');
         });
+        var $full = full(opts, hide(opts.hideOnClick), $overlay);
+        var $content = content($elem, opts.$content);
+
+        if($elem) {
+            $elem.bind('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                show();
+
+                return false;
+            });
+        }
+        else {
+            return {
+                show: show,
+                hide: hide(true)
+            };
+        }
+
+        function hide(hideOnClick) {
+            return function() {
+                if(!hideOnClick) return;
+                forceHide($('.' + fullClass + ':visible:last'))();
+            };
+        }
 
         function show() {
-            var $content;
-            if(opts.$content) {
-                opts.$content.show();
-                $content = opts.$content;
-            }
-            else if($elem) $content = $elem.clone();
-
-            $content.removeClass();
-
             $full.html($content);
-
             $full.center();
+            $content.show();
             opts.cbs.show($overlay, $full, $elem);
-
-            $overlay.unbind('click');
-            $overlay.bind('click', hide($('.' + opts.fullClass)));
-            $overlay.unbind('hide');
-            $overlay.bind('hide', forceHide($full));
-        }
-
-        function hide($f) {
-            return function() {
-                if(!opts.hideOnClick) return;
-                forceHide($f)();
-            };
         }
 
         function forceHide($f) {
             return function() {
-                if(opts.$content) opts.$content.hide();
-                opts.cbs.hide($overlay, $f, $elem);
+                var anotherFullExists = $('.' + fullClass + ':visible').length > 1;
+
+                opts.cbs.hide(anotherFullExists? $(): $overlay, $f);
             };
         }
+    }
+
+    function content($elem, $content) {
+        if($content) {
+            $ret = $content;
+            $content.hide();
+        }
+        else if($elem) {
+            $ret = $elem.clone();
+        }
+        else {
+            console.warn('No content given to yabox!');
+            return $();
+        }
+
+        $ret.removeClass();
+
+        return $ret;
+    }
+
+    function overlay(opts, apiHide, clickHide) {
+        var $elem = $('.' + overlayClass + ':first');
+
+        if($elem.length) return $elem;
+
+        return $('<div/>').
+            appendTo($('body')).
+            addClass(overlayClass).
+            bind('click', clickHide).
+            bind('hide', apiHide).
+            hide();
+    }
+
+    function full(opts, hide, $overlay) {
+        return $('<div/>').hide().
+            css({
+                'z-index': $overlay.css('z-index') + 1
+            }).
+            addClass(fullClass).
+            addClass(opts.fullClass).
+            bind('click', hide).
+            appendTo($('body'));
     }
 
     $.fn.yabox = function(options) {
