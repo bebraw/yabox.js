@@ -84,4 +84,7 @@
     width: 200px;
     height: 200px;
     background-color: white;
+    -moz-box-shadow: 3px 3px 10px #222;
+    -webkit-box-shadow: 3px 3px 10px #222;
+    box-shadow: 3px 3px 10px #222;
 }
