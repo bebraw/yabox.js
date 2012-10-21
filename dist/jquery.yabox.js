@@ -1,4 +1,4 @@
-/*! yabox.js - v0.5.1 - 2012-10-20
+/*! yabox.js - v0.5.1 - 2012-10-21
 * http://bebraw.github.com/yabox.js/
 * Copyright (c) 2012 Juho Vepsalainen; Licensed MIT */
 
@@ -139,12 +139,11 @@
     };
 
     $.fn.yabox.animated = {
-        show: function(length, opacity) {
+        show: function(length) {
             length = length || 300;
-            opacity = opacity || 0.3;
 
             return function($overlay, $full) {
-                $overlay.show().css('opacity', opacity);
+                $overlay.show();
                 $full.fadeIn(length);
             };
         },
