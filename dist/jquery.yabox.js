@@ -1,4 +1,4 @@
-/*! yabox.js - v0.5.7 - 2013-01-05
+/*! yabox.js - v0.5.8 - 2013-01-05
 * http://bebraw.github.com/yabox.js/
 * Copyright (c) 2013 Juho Vepsalainen; Licensed MIT */
 
