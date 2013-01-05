@@ -81,7 +81,7 @@
     function full(opts, hide, $overlay) {
         return $('<div/>').hide().
             css({
-                'z-index': $overlay.css('z-index') + 1
+                'z-index': parseInt($overlay.css('z-index'), 10) + 1
             }).
             addClass(fullClass).
             addClass(opts.fullClass).

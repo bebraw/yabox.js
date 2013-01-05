@@ -1,6 +1,6 @@
-/*! yabox.js - v0.5.7 - 2012-10-21
+/*! yabox.js - v0.5.7 - 2013-01-05
 * http://bebraw.github.com/yabox.js/
-* Copyright (c) 2012 Juho Vepsalainen; Licensed MIT */
+* Copyright (c) 2013 Juho Vepsalainen; Licensed MIT */
 
 (function ($) {
     // http://stackoverflow.com/a/210733/228885
@@ -111,7 +111,7 @@
     function full(opts, hide, $overlay) {
         return $('<div/>').hide().
             css({
-                'z-index': $overlay.css('z-index') + 1
+                'z-index': parseInt($overlay.css('z-index'), 10) + 1
             }).
             addClass(fullClass).
             addClass(opts.fullClass).
