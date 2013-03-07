@@ -26,8 +26,10 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
-            files: {
-                '<%= dirs.dest %>.min.js': ['<%= dirs.src %>']
+            'default': {
+                files: {
+                    '<%= dirs.dest %>.min.js': ['<%= dirs.src %>']
+                }
             }
         },
         connect: {
