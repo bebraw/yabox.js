@@ -4,6 +4,7 @@
     "version": "0.5.8",
     "license": "MIT",
     "homepage": "https://github.com/bebraw/yabox.js",
+    "private": true,
     "devDependencies": {
         "grunt": "== 0.4.0",
         "grunt-jekyll": "== 0.2.2",
