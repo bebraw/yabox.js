@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         },
         watch: {
             reload: {
-                files: ['_config.yml', '_meta/*', 'js/**/*.js', 'index.html', 'grunt.js'],
+                files: ['src/*.js', 'index.html'],
                 tasks: 'refresh'
             }
         },
