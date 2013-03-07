@@ -3,6 +3,7 @@
   "version": "0.5.9",
   "main": "./dist/jquery.yabox.min.js",
   "dependencies": {
+    "jquery": ">= 1.4.4",
     "jquery.center.js": "0.1.1"
   }
 }
