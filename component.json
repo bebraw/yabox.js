@@ -1,6 +1,6 @@
 {
   "name": "yabox.js",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "main": "./dist/jquery.yabox.min.js",
   "dependencies": {
     "jquery": ">= 1.4.4",

@@ -1,4 +1,4 @@
-/*! yabox - v0.5.9 - Juho Vepsalainen - MIT
+/*! yabox - v0.6.0 - Juho Vepsalainen - MIT
 https://github.com/bebraw/yabox.js - 2013-03-07 */
 (function ($) {
     // http://stackoverflow.com/a/210733/228885
