@@ -1,7 +1,5 @@
-/*! yabox.js - v0.5.8 - 2013-01-05
-* http://bebraw.github.com/yabox.js/
-* Copyright (c) 2013 Juho Vepsalainen; Licensed MIT */
-
+/*! yabox - v0.5.8 - Juho Vepsalainen - MIT
+https://github.com/bebraw/yabox.js - 2013-03-07 */
 (function ($) {
     // http://stackoverflow.com/a/210733/228885
     jQuery.fn.center = function ($parent) {
