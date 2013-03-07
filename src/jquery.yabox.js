@@ -22,7 +22,10 @@
         else {
             return {
                 show: show,
-                hide: hide(true)
+                hide: hide(true),
+                $full: $full,
+                $content: $content,
+                $overlay: $overlay
             };
         }
 

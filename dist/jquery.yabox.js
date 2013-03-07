@@ -50,7 +50,10 @@ https://github.com/bebraw/yabox.js - 2013-03-07 */
         else {
             return {
                 show: show,
-                hide: hide(true)
+                hide: hide(true),
+                $full: $full,
+                $content: $content,
+                $overlay: $overlay
             };
         }
 
