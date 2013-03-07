@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
-            src: ['src/jquery.center.js', 'src/jquery.<%= pkg.name %>.js'],
+            src: ['components/jquery.center.js/src/jquery.center.js', 'src/jquery.<%= pkg.name %>.js'],
             dest: 'dist/jquery.<%= pkg.name %>'
         },
         concat: {

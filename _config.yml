@@ -1,1 +1,1 @@
-exclude: ['node_modules']
+exclude: ['components', 'node_modules']
