@@ -4,7 +4,19 @@ yabox.js makes it easy to create one of those infamous popovers. It sticks to th
 
 ## Installation
 
-Add prepackaged `dist/jquery.yabox.js` to your page.
+Add prepackaged `dist/jquery.yabox.js` to your page. There is also a minified version available.
+
+If you want, you can install the module using Bower.
+
+## Development
+
+You'll need to have Node, Bower and Grunt installed. After that the following workflow should do the trick:
+
+1. sudo npm install
+2. bower install
+3. grunt
+
+The last command will run a development server.
 
 ## License
 
