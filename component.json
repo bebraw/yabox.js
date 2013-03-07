@@ -1,0 +1,5 @@
+{
+  "name": "yabox.js",
+  "version": "0.5.8",
+  "main": "./dist/jquery.yabox.min.js",
+}
