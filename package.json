@@ -1,7 +1,7 @@
 {
     "name": "yabox",
     "author": "Juho Vepsalainen",
-    "version": "0.5.8",
+    "version": "0.5.9",
     "license": "MIT",
     "homepage": "https://github.com/bebraw/yabox.js",
     "private": true,
