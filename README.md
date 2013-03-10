@@ -1,6 +1,6 @@
 # yabox.js - Yet another lightbox clone for jQuery
 
-yabox.js makes it easy to create one of those infamous popovers. It sticks to the view center (fixed there). It is light and somewhat extensible by design.
+yabox.js makes it easy to create one of those infamous popovers. It sticks to the view center (fixed there). It is light and somewhat extensible by design. Supports [Zepto](http://zeptojs.com/). In case you want to use animations with Zepto, include fx\_methods to your project.
 
 ## Installation
 
