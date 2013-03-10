@@ -1,4 +1,4 @@
-/*! yabox - v0.6.1 - Juho Vepsalainen - MIT
+/*! yabox - v0.7.0 - Juho Vepsalainen - MIT
 https://github.com/bebraw/yabox.js - 2013-03-10 */
 /*! jquery.center - v0.2.0 - Juho Vepsalainen - MIT
 https://github.com/bebraw/jquery.center.js - 2013-03-10 */
